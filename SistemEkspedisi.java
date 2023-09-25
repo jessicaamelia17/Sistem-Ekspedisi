@@ -6,10 +6,10 @@ public static void main(String[] args){
         //Deklarasi
         String isi_barang, namaPenerima, alamatTujuan, pengirim;
         int no_resi, jumlah;
-        int berat;
-        int ongkosKirim;
+        double berat,biaya;
+        double biaya1kg=13000; //tarif 1kg
+        double biayaFlat=200000; //tarif flat
         long no_hp;
-        long biaya;
         
         //output
         System.out.println("--Data Ekspedisi--");
@@ -23,9 +23,12 @@ public static void main(String[] args){
         no_hp = ekspedisi.nextLong();
         System.out.print("Berat (kg): ");
         berat = ekspedisi.nextInt();
-        System.out.print("Ongkos Kirim: ");
-        ongkosKirim = ekspedisi.nextInt();
-        biaya = berat * ongkosKirim;
+       
+        if(berat<=20){
+        biaya=berat*biaya1kg;
+        }
+        else{ biaya=biayaFlat;
+        }
         System.out.println("Total Biaya: " +biaya);
         System.out.print("Nama Penerima: ");
         namaPenerima = ekspedisi.next();
