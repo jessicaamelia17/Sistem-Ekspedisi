@@ -7,8 +7,8 @@ public static void main(String[] args){
         String isi_barang, namaPenerima, alamatTujuan, pengirim;
         int no_resi, jumlah;
         double berat,biaya;
-        double biaya1kg=13000; //tarif 1kg
-        double biayaFlat=200000; //tarif flat
+        double biaya1kg=13000; //tarif1kg
+        double biayaFlat=200000; //tarifflat
         long no_hp;
         
         //output
