@@ -6,7 +6,8 @@ public class ekspedisi{
 
         //Deklarasi
         String isi_barang, namaPenerima, alamatTujuan, pengirim, layanan;
-        int no_resi, jumlah;
+        int no_resi, jumlah, jml=0; //inisialisasi (jml=0)
+        char jawab;
         double berat, biaya = 0;
         long no_hp;
         
@@ -14,10 +15,15 @@ public class ekspedisi{
         System.out.println("--Data Ekspedisi--");
         System.out.print("Masukkan No. Resi: ");
         no_resi = ekspedisi.nextInt();
-        System.out.print("isi barang: ");
-        isi_barang = ekspedisi.next();
-        System.out.print("Jumlah barang: ");
-        jumlah = ekspedisi.nextInt();
+        do{
+            System.out.print("Isi barang: ");
+            isi_barang = ekspedisi.next();
+            jml++;
+            System.out.print("Apakah anda ingin menambahkan barang (Y/T)? ");
+            jawab = ekspedisi.next().charAt(0);
+        }while (jawab == 'Y' || jawab == 'y');
+        System.out.println("Jumlah barang yang akan dikirimkan = "+jml);
+
         System.out.print("Masukkan no HP customer: ");
         no_hp = ekspedisi.nextLong();
         System.out.print("Berat (kg): ");
