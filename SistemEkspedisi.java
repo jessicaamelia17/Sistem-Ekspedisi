@@ -15,10 +15,7 @@ public static void main(String[] args){
         int no_resi,almtTuju, index;
         double [] berat = new double [20];
        
-        
-        
         //output
- 
         System.out.println("----------------");
             
         while (true){
@@ -39,9 +36,6 @@ public static void main(String[] args){
                         no_resi = ekspedisi.nextInt();
                         System.out.print("Nama Pengirim: ");
                         pengirim = ekspedisi.next();
-                       // int noCari []= new int [no_resi];
-                    // System.out.print("Isi barang: ");
-                        //isi_barang = ekspedisi.next();
                         do {
                             System.out.print("Isi barang :");
                             isi_barang[jml] = ekspedisi.next();
