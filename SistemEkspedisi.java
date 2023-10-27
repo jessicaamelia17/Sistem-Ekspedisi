@@ -12,7 +12,7 @@ public static void main(String[] args){
         double biaya=0;
         long no_hp;
         int maxPaket =15;
-        int no_resi, almtTuju, index;
+        int no_resi,almtTuju, index;
         //int [] nomorPaket = new int [maxPaket];
         //String [] tujuan = new String [maxPaket];
         //double [] beratPaket = new double [maxPaket];
