@@ -13,11 +13,8 @@ public static void main(String[] args){
         long no_hp;
         int maxPaket =15;
         int no_resi,almtTuju, index;
-        //int [] nomorPaket = new int [maxPaket];
-        //String [] tujuan = new String [maxPaket];
-        //double [] beratPaket = new double [maxPaket];
         double [] berat = new double [20];
-        //int jumlahPaket = 0;
+       
         
         
         //output
@@ -154,26 +151,6 @@ public static void main(String[] args){
                             System.out.println("Data Anda Telah Diproses");
                             System.out.println("--------------------");
                         }
-                        // Buat variabel untuk menyimpan nomor resi
-                  // String nomor_resi = "";
-
-                   // Buat fungsi untuk generate nomor resi
-                 //  Random random = new Random();
-                 //  for (int i = 0; i < 10; i++) {
-                 //  nomor_resi += random.nextInt(10);
-                 //  }
-
-                   // Tampilkan nomor resi
-                 //  System.out.println("Nomor resi Anda adalah: " + nomor_resi);
-                 //  System.out.println("--------------------");
-                        // System.out.println("Nomor Paket : ");
-                                //noCari[no_resi] = ekspedisi.nextInt();
-                            // ekspedisi.nextLine(); // Membersihkan newline
-                            // System.out.print("Tujuan: ");
-                            // tujuan[jumlahPaket] = ekspedisi.nextLine();
-                            // System.out.print("Berat (kg): ");
-                            // beratPaket[jumlahPaket] = ekspedisi.nextDouble();
-                                //jumlahPaket++;
                         break;
 
             case 2:
@@ -197,42 +174,10 @@ public static void main(String[] args){
                     System.out.println("Alamat tujuan " + cari + " tidak ditemukan");
                 }
 
-            
-               // System.out.print("Masukkan nomor paket yang dicari: ");
-                //int noCari [no_resi] = ekspedisi.nextInt();
-                //int i = {noCari, almtTuju};
-               // if (i != -1) {
-              //      System.out.println("Paket ditemukan - Nomor Paket: " + noCari[i] + ", Tujuan: " + tujuan[indeks] );
-              //  } else {
-             //       System.out.println("Paket tidak ditemukan.");
-            //    }
                 break;
 
             case 3:
-                // Sorting paket berdasarkan nomor secara sederhana
-              //  for (int i = 0; i < jumlahPaket - 1; i++) {
-              //      for (int j = 0; j < jumlahPaket - i - 1; j++) {
-              //          if (no_resi[j] > no_resi[j + 1]) {
-              //              // Tukar posisi
-              //              int tempNomor = no_resi[j];
-              //              no_resi[j] = no_resi[j + 1];
-              //              no_resi[j + 1] = tempNomor;
-
-              //              String tempTujuan = tujuan[j];
-              //              tujuan[j] = tujuan[j + 1];
-              //              tujuan[j + 1] = tempTujuan;
-
-               //             double tempBerat = beratPaket[j];
-               //             beratPaket[j] = beratPaket[j + 1];
-               //             beratPaket[j + 1] = tempBerat;
-              //          }
-              //      }
-              //  }
-
-              //  System.out.println("Daftar Paket setelah pengurutan berdasarkan nomor:");
-              //  for (int i = 0; i < jumlahPaket; i++) {
-              //      System.out.println("Nomor Paket: " + no_resi[i] + ", Tujuan: " + tujuan[i] + ", Berat: " + beratPaket[i] + " kg");
-              //  }
+           
                 break;
 
             case 4:
@@ -246,14 +191,6 @@ public static void main(String[] args){
     }
 }
 
-//public static int cariPaketByNomor(int[] nomorPaket, int jumlahPaket, int nomorCari) {
-//    for (int i = 0; i < jumlahPaket; i++) {
-//        if (nomorPaket[i] == nomorCari) {
-//            return i;
-//        }
-//    }
-//    return -1; // Paket tidak ditemukan
-//}
             }
         
 
