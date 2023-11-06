@@ -279,7 +279,7 @@ public static void main(String[] args){
                     break;
                 case 5:
                     kondisi=false;
-                    System.out.println("Terima kasih!");
+                     System.out.println("Terima kasih!");
                     
                     
 
