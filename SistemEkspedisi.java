@@ -1,31 +1,33 @@
 import java.util.Scanner;
+import java.util.Random;
+
 public class SistemEkspedisi{ 
 public static void main(String[] args){
-        String[] isi_barang = new String[400];
-        
-        Scanner ekspedisi = new Scanner(System.in);
-
-        //Deklarasi
-        String [][] dataEkspedisi = new String [100][10];
-        String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
-        int jumlah, jml=0, hari, l=0;
-        char jawab;
-        double biaya=0, totalBiaya=0.0;
-        long no_hp, no_hp_penerima;
-        int maxPaket = 15;
-        int no_resi, index;
-        double [] berat = new double [20];
-        Boolean kondisi = true;
-        // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
-        int[][] biayaEkspedisi = {
-        // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
-            {0   , 6000 , 8000, 10000, 6000, 8000, 10000},  // Malang
-            {6000, 0    , 6000, 12000, 7000, 6000, 8000},  // Blitar
-            {8000, 6000  , 0   , 13000, 10000, 7000, 6000},  // Kediri
-            {10000, 12000, 13000, 0   , 8000, 14000, 15000},  // Surabaya
-            {6000, 7000  , 10000, 8000, 0    , 9000, 10000},  // Pasuruan
-            {8000, 6000  , 6000, 16000, 10000, 0    , 7000},  // Tulungagung
-            {10000, 8000, 6000, 15000, 1000, 7000    , 0}   // Madiun
+    
+    Scanner ekspedisi = new Scanner(System.in);
+    
+    //Deklarasi
+    String [][] dataEkspedisi = new String [100][10];
+    String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
+    int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
+    String[] isi_barang = new String[50];
+    char jawab;
+    double biaya=0, totalBiaya=0.0;
+    long no_hp, no_hp_penerima;
+    int maxPaket = 15;
+    int  index;
+    double [] berat = new double [20];
+    Boolean kondisi = true;
+    // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
+    int[][] biayaEkspedisi = {
+    // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
+      {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
+      {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
+      {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
+      {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
+      {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
+      {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
+      {10000, 8000 , 6000 , 15000, 1000 , 7000 , 0    }   // Madiun
         };
             
         //output
@@ -47,8 +49,6 @@ public static void main(String[] args){
                 case 1:
                         if (l<dataEkspedisi.length){
                         System.out.println("--Data Ekspedisi--");
-                        System.out.print("Masukkan No. Resi: " );
-                        no_resi = ekspedisi.nextInt();
                         System.out.print("Nama Pengirim: ");
                         pengirim = ekspedisi.next();
                         do {
@@ -60,24 +60,25 @@ public static void main(String[] args){
                         }while (jawab == 'Y' || jawab == 'y');
                         System.out.println("-----------------------------");
                         System.out.println("Berikut adalah isi barang yang akan dipaketkan : ");
-                        for (int i=0; i<jml;i++){
-                            System.out.println(isi_barang[i]);
+                        for (String barang : isi_barang){
+                            if (barang != null){
+                            System.out.println(barang );
+                            }
                         }
                         System.out.println("Jumlah barang yang akan dikirimkan : " + jml);
-                    // System.out.print("Jumlah barang: ");
-                    // jumlah = ekspedisi.nextInt();
+
                         System.out.println("-----------------------------");
                         System.out.print("Masukkan No. HP customer: ");
                         no_hp = ekspedisi.nextLong(); 
-                        
+                         do{
                         System.out.print("Masukkan kota asal (Malang, Blitar, Kediri, Surabaya, Pasuruan, Tulungagung, Madiun): ");
                         kotaAsal = ekspedisi.next();
 
                         System.out.print("Masukkan kota tujuan (Malang, Blitar, Kediri, Surabaya, Pasuruan, Tulungagung, Madiun): ");
                         kotaTujuan = ekspedisi.next();
 
-                        int indeksKotaAsal = -1;
-                        int indeksKotaTujuan = -1;
+                        indeksKotaAsal = -1;
+                        indeksKotaTujuan = -1;
                 
                         // Mencari indeks kota asal
                         if (kotaAsal.equalsIgnoreCase("Malang")) {
@@ -172,28 +173,42 @@ public static void main(String[] args){
                         penerima = ekspedisi.next();
                         System.out.print("Masukkan nomor HP penerima: ");
                         no_hp_penerima = ekspedisi.nextLong();
+                        // Buat variabel untuk menyimpan nomor resi
+                        String nomor_resi = "";
+        
+                       // Buat fungsi untuk generate nomor resi
+                        Random random = new Random();
+                        for (int j = 0; j < 10; j++) {
+                        nomor_resi += random.nextInt(10);
+                        }
+                       // Tampilkan nomor resi
+                        System.out.println("Nomor resi Anda adalah: " + nomor_resi);
                             System.out.println("Data Anda Telah Diproses");
                             System.out.println("--------------------");
                             
-                            dataEkspedisi[1][0] = Integer.toString(no_resi);
+                            
+                            dataEkspedisi[l][0] = nomor_resi;
                             dataEkspedisi[l][1] = pengirim;
-                            dataEkspedisi[1][2] = Long.toString(no_hp);
-                            dataEkspedisi[1][3] = isi_barang+"";
+                            dataEkspedisi[l][2] = Long.toString(no_hp);
+                            dataEkspedisi[l][3] = String.join(", ", isi_barang);
                             dataEkspedisi[l][4] = layanan;
-                            dataEkspedisi[1][5] = Double.toString(totalBiaya);
+                            dataEkspedisi[l][5] = Double.toString(totalBiaya);
                             dataEkspedisi[l][6] = berat[maxPaket]+"";
                             dataEkspedisi[l][7] = kotaTujuan;
-                            dataEkspedisi[1][8] = penerima;
-                            dataEkspedisi[1][9] = Long.toString(no_hp_penerima)+"";
-
+                            dataEkspedisi[l][8] = penerima;
+                            dataEkspedisi[l][9] = Long.toString(no_hp_penerima)+"";
                         l++;
                         System.out.println("Data ekspedisi berhasil ditambahkan.");
+                        } else {
+                            System.out.println("Kota asal atau kota tujuan tidak tersedia.");
                         }
-                        break;
+                    }while (indeksKotaAsal == -1 || indeksKotaTujuan == -1);
+                    
                     }
+                        break;
                 case 2:
                 System.out.println("Data Ekspedisi:");
-                for (int i = 0; i < l; i++) {
+                 for (int i = 0; i < l; i++) {
                     System.out.println("No Resi: " + dataEkspedisi[i][0]);
                     System.out.println("Pengirim: " + dataEkspedisi[i][1]);
                     System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
@@ -204,8 +219,9 @@ public static void main(String[] args){
                     System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
                     System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
                     System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
-                    //System.out.println();
+                    System.out.println();
                 }
+          
                 break;
                 
                 case 3:
@@ -248,34 +264,6 @@ public static void main(String[] args){
                     }
                     System.out.println();
                 }
-                        // Hitung total penggunaan layanan pengiriman per minggu
-                int[] totalLayananPerHari = new int[4];
-                for (int i = 0; i < riwayatLayanan.length; i++) {
-                    for (int j = 0; j < riwayatLayanan[0].length; j++) {
-                        totalLayananPerHari[j] += riwayatLayanan[i][j];
-                    }
-                }
-
-                // Tampilkan total penggunaan layanan pengiriman per minggu
-                System.out.println("Total penggunaan layanan pengiriman per minggu:");
-                for (int i = 0; i < totalLayananPerHari.length; i++) {
-                    System.out.println("Minggu ke-" + (i + 1) + ": " + totalLayananPerHari[i]);
-                }
-
-                // Hitung total penggunaan layanan pengiriman per layanan
-                int[] totalLayananPerLayanan = new int[4];
-                for (int i = 0; i < riwayatLayanan.length; i++) {
-                    for (int j = 0; j < riwayatLayanan[0].length; j++) {
-                        totalLayananPerLayanan[i] += riwayatLayanan[i][j];
-                    }
-                }
-
-                // Tampilkan total penggunaan layanan pengiriman per layanan
-                System.out.println("Total penggunaan layanan pengiriman per layanan:");
-                for (int i = 0; i < totalLayananPerLayanan.length; i++) {
-                    System.out.println("Layanan " + layananTersedia[i] + ": " + totalLayananPerLayanan[i]);
-                }
-
                     break;
                 case 5:
                     kondisi=false;
@@ -284,7 +272,7 @@ public static void main(String[] args){
                     
 
                 default:
-                    System.out.println("Pilihan tidak valid.");
+                    System.out.println();
                     break;
         }
     }}}
