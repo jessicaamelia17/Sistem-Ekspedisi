@@ -247,16 +247,18 @@ public static void main(String[] args){
             
                     break;
                 case 4:
+                // Inisialisasi array untuk menyimpan riwayat penggunaan layanan
                 int riwayatLayanan [][] = new int [4][4];
+                // Array untuk menyimpan jenis layanan yang tersedia
                 String [] layananTersedia = {"Reguler", "Kargo","Hemat", "SameDay" };
-                
+                // Input jumlah penggunaan layanan untuk setiap jenis dan setiap minggu
                 for (int i = 0; i < riwayatLayanan.length; i++) {
                     for (int j = 0; j < riwayatLayanan[i].length; j++) {
+                         // Minta pengguna memasukkan jumlah penggunaan layanan
                         System.out.print("Jumlah penggunaan layanan " + (layananTersedia[i]) + ", minggu ke-" + (j + 1) + ": ");
                         riwayatLayanan[i][j] = ekspedisi.nextInt();
                     }
                 }
-        
                 // Tampilkan array
                 for (int i = 0; i < riwayatLayanan.length; i++) {
                     for (int j = 0; j < riwayatLayanan[i].length; j++) {
