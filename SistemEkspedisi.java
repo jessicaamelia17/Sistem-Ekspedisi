@@ -1,9 +1,8 @@
 import java.util.Scanner;
+import java.util.Calendar;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
-private static final CharSequence barang = null;
-
 public static void main(String[] args){
     
     Scanner ekspedisi = new Scanner(System.in);
@@ -29,6 +28,9 @@ public static void main(String[] args){
     int  index;
     double [] berat = new double [20];
     Boolean kondisi = true;
+    double pendapatanHarian = 0;
+    double pendapatanBulanan = 0;
+    int bulanIni = -1;
     // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
     int[][] biayaEkspedisi = {
     // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
@@ -66,7 +68,7 @@ public static void main(String[] args){
         }while (user!=1);
             
         //output
-        System.out.println("------------------------");
+        System.out.println("----------------");
             
         while (kondisi){
             System.out.println("----------------------------------------");
@@ -244,7 +246,7 @@ public static void main(String[] args){
                 
                 case 2:
                 System.out.println("Data Ekspedisi:");
-                 for (int i = 1; i < l; i++) {
+                 for (int i = 0; i < l; i++) {
                     System.out.println("No Resi: " + dataEkspedisi[i][0]);
                     System.out.println("Pengirim: " + dataEkspedisi[i][1]);
                     System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
@@ -283,29 +285,32 @@ public static void main(String[] args){
             
                     break;
                 case 4:
-                // Inisialisasi array untuk menyimpan riwayat penggunaan layanan
-                int riwayatLayanan [][] = new int [4][4];
-                // Array untuk menyimpan jenis layanan yang tersedia
-                String [] layananTersedia = {"Reguler", "Kargo","Hemat", "SameDay" };
-                // Input jumlah penggunaan layanan untuk setiap jenis dan setiap minggu
-                for (int i = 0; i < riwayatLayanan.length; i++) {
-                    for (int j = 0; j < riwayatLayanan[i].length; j++) {
-                         // Minta pengguna memasukkan jumlah penggunaan layanan
-                        System.out.print("Jumlah penggunaan layanan " + (layananTersedia[i]) + ", minggu ke-" + (j + 1) + ": ");
-                        riwayatLayanan[i][j] = ekspedisi.nextInt();
-                    }
+                Calendar cal = Calendar.getInstance();
+                int hariIni = cal.get(Calendar.DAY_OF_MONTH);
+                int bulanBaru = cal.get(Calendar.MONTH);
+
+                if (hariIni != bulanIni) {
+                    pendapatanHarian = 0;
                 }
-                // Tampilkan array
-                for (int i = 0; i < riwayatLayanan.length; i++) {
-                    for (int j = 0; j < riwayatLayanan[i].length; j++) {
-                        System.out.print(riwayatLayanan[i][j] + " ");
-                    }
-                    System.out.println();
+
+                if (bulanBaru != bulanIni) {
+                    pendapatanHarian = 0;
+                    pendapatanBulanan = 0;
                 }
+                pendapatanHarian += totalBiaya;
+                pendapatanBulanan += totalBiaya;
+
+                bulanIni = bulanBaru;
+                System.out.println("----------------------------------------");
+                System.out.println("|          Laporan Pendapatan          |");
+                System.out.println("    Pendapatan Harian:   Rp " + pendapatanHarian);
+                System.out.println("    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
+                System.out.println("----------------------------------------");
                     break;
+
                 case 5:
                     kondisi=false;
-                     System.out.println("Terima kasih Telah Menggunakan Layanan Ekspedisi Kami");
+                     System.out.println("Terima kasih!");
                     
                     
 
@@ -314,10 +319,3 @@ public static void main(String[] args){
                     break;
         }
     }}}
-
-            
-        
-
-
-
-
