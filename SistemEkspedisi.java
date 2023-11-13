@@ -310,7 +310,7 @@ public static void main(String[] args){
 
                 case 5:
                     kondisi=false;
-                     System.out.println("Terima kasih!");
+                     System.out.println("Terima kasih telah menggunakan layanan kami");
                     
                     
 
