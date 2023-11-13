@@ -2,12 +2,23 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
+private static final CharSequence barang = null;
+
 public static void main(String[] args){
     
     Scanner ekspedisi = new Scanner(System.in);
     
     //Deklarasi
     String [][] dataEkspedisi = new String [100][10];
+    String [][] akun = { 
+        //Nama
+        {"Jessica Amelia"}, { "Lovelyta Sekarayu Krisdiyanti"},
+        {"Moh. Syifa'ul Faj Ismunir"}
+    };
+    int [][] password = {
+        {230403}, {}, {}
+    };
+    int user = -1;
     String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
     int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
     String[] isi_barang = new String[50];
@@ -27,11 +38,35 @@ public static void main(String[] args){
       {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
       {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
       {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
-      {10000, 8000 , 6000 , 15000, 1000 , 7000 , 0    }   // Madiun
+      {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
         };
+        System.out.println("---------------------------");
+        System.out.println("\tSELAMAT DATANG DI EKSPEDISI JLS FAST");
+        System.out.println("---------------------------");
+        do {
+            System.out.print("\nMasukkan User Name      : ");
+            String inputNama = ekspedisi.nextLine();
+            System.out.print("Masukkan Password anda    : ");
+            int inputPin = ekspedisi.nextInt();
+
+            for (int i = 0; i < akun.length; i++) {
+                if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
+                    user = 1;
+                    System.out.println("-------------------------------");
+                    System.out.println("\tLogin Berhasil!");
+                    System.out.println("-------------------------------");
+                    break;
+                }
+            }
+            if (user==1){
+                continue;
+            }else {
+                System.out.println("\nUser Name dan Password salah");
+            }
+        }while (user!=1);
             
         //output
-        System.out.println("----------------");
+        System.out.println("------------------------");
             
         while (kondisi){
             System.out.println("----------------------------------------");
@@ -203,12 +238,13 @@ public static void main(String[] args){
                             System.out.println("Kota asal atau kota tujuan tidak tersedia.");
                         }
                     }while (indeksKotaAsal == -1 || indeksKotaTujuan == -1);
-                    
+
                     }
-                        break;
+                break;
+                
                 case 2:
                 System.out.println("Data Ekspedisi:");
-                 for (int i = 0; i < l; i++) {
+                 for (int i = 1; i < l; i++) {
                     System.out.println("No Resi: " + dataEkspedisi[i][0]);
                     System.out.println("Pengirim: " + dataEkspedisi[i][1]);
                     System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
@@ -269,7 +305,7 @@ public static void main(String[] args){
                     break;
                 case 5:
                     kondisi=false;
-                     System.out.println("Terima kasih!");
+                     System.out.println("Terima kasih Telah Menggunakan Layanan Ekspedisi Kami");
                     
                     
 
