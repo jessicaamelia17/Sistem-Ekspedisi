@@ -58,19 +58,19 @@ public static void main(String[] args){
 
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
-                    user = 1;
+                    online=true;
                     System.out.println("-------------------------------");
                     System.out.println("\tLogin Berhasil!");
                     System.out.println("-------------------------------");
                     break;
                 }
             }
-            if (user==1){
+            if (online==true){
                 continue;
             }else {
                 System.out.println("\nUser Name dan Password salah");
             }
-        }while (user!=1);
+        }while (!online);
     
         System.out.println("----------------");
         while (kondisi){
@@ -249,7 +249,7 @@ public static void main(String[] args){
                 
                 case 2:
                 System.out.println("Data Ekspedisi:");
-                 for (int i = 0; i < l; i++) {
+                 for (int i = 1; i < l; i++) {
                     System.out.println("No Resi: " + dataEkspedisi[i][0]);
                     System.out.println("Pengirim: " + dataEkspedisi[i][1]);
                     System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
