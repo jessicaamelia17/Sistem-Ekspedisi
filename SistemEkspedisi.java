@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class SistemEkspedisi{ 
+public class ekspedisi{ 
 public static void main(String[] args){
     
     Scanner ekspedisi = new Scanner(System.in);
@@ -31,8 +31,6 @@ public static void main(String[] args){
         };
             
         //output
-        System.out.println("----------------");
-            
         while (kondisi){
             System.out.println("----------------------------------------");
             System.out.println("|           Menu :                     |");
@@ -208,17 +206,17 @@ public static void main(String[] args){
                         break;
                 case 2:
                 System.out.println("Data Ekspedisi:");
-                 for (int i = 0; i < l; i++) {
-                    System.out.println("No Resi: " + dataEkspedisi[i][0]);
-                    System.out.println("Pengirim: " + dataEkspedisi[i][1]);
-                    System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
-                    System.out.println("Isi barang: " + dataEkspedisi[i][3]);
-                    System.out.println("Layanan: " + dataEkspedisi[i][4]);
-                    System.out.println("Ongkos kirim: " + dataEkspedisi[i][5]);
-                    System.out.println("Berat Paket: " + dataEkspedisi[i][6] + " Kg");
-                    System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
-                    System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
-                    System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
+                 for (int i = 1; i < l; i++) {
+                    System.out.println("No Resi: " + (dataEkspedisi[i][0] != null ? dataEkspedisi[i][0]: ""));
+                    System.out.println("Pengirim: " + (dataEkspedisi[i][1] != null ? dataEkspedisi[i][1]: ""));
+                    System.out.println("No HP Pengirim: " + (dataEkspedisi[i][2] != null ? dataEkspedisi[i][2]: ""));
+                    System.out.println("Isi barang: " + (dataEkspedisi[i][3] != null ? dataEkspedisi[i][3]: ""));
+                    System.out.println("Layanan: " + (dataEkspedisi[i][4] != null ? dataEkspedisi[i][4]: ""));
+                    System.out.println("Ongkos kirim: " + (dataEkspedisi[i][5] != null ? dataEkspedisi[i][5]: ""));
+                    System.out.println("Berat Paket: " + (dataEkspedisi[i][6] != null ? dataEkspedisi[i][6] + " Kg" : ""));
+                    System.out.println("Alamat Tujuan: " + (dataEkspedisi[i][7] != null ? dataEkspedisi[i][7]: ""));
+                    System.out.println("Nama Penerima: " + (dataEkspedisi[i][8] != null ? dataEkspedisi[i][8]: ""));
+                    System.out.println("No HP Penerima: " + (dataEkspedisi[i][9] != null ? dataEkspedisi[i][9]: ""));
                     System.out.println();
                 }
           
@@ -278,10 +276,3 @@ public static void main(String[] args){
                     break;
         }
     }}}
-
-            
-        
-
-
-
-
