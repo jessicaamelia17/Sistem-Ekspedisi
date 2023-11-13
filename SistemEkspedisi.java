@@ -267,8 +267,8 @@ public static void main(String[] args){
                 bulanIni = bulanBaru;
                 System.out.println("----------------------------------------");
                 System.out.println("|          Laporan Pendapatan          |");
-                System.out.println("|    Pendapatan Harian:   Rp " + pendapatanHarian);
-                System.out.println("|    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
+                System.out.println("    Pendapatan Harian:   Rp " + pendapatanHarian);
+                System.out.println("    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
                 System.out.println("----------------------------------------");
                     break;
 
