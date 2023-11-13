@@ -15,7 +15,7 @@ public static void main(String[] args){
         {"Moh. Syifa'ul Faj Ismunir"}
     };
     int [][] password = {
-        {230403}, {}, {}
+        {112233}, {445566}, {778899}
     };
     int user = -1;
     String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
@@ -27,7 +27,7 @@ public static void main(String[] args){
     int maxPaket = 15;
     int  index;
     double [] berat = new double [20];
-    Boolean kondisi = true;
+    Boolean kondisi = true, online = true;
     double pendapatanHarian = 0;
     double pendapatanBulanan = 0;
     int bulanIni = -1;
@@ -42,14 +42,19 @@ public static void main(String[] args){
       {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
       {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
         };
-        System.out.println("---------------------------");
-        System.out.println("\tSELAMAT DATANG DI EKSPEDISI JLS FAST");
-        System.out.println("---------------------------");
+        System.out.println("----------------------------------");
+        System.out.println("\tSELAMAT DATANG DI ");
+        System.out.println("\tEKSPEDISI JLS FAST");
+        System.out.println("----------------------------------");
+        
+        //output
+ 
         do {
             System.out.print("\nMasukkan User Name      : ");
             String inputNama = ekspedisi.nextLine();
             System.out.print("Masukkan Password anda    : ");
             int inputPin = ekspedisi.nextInt();
+            ekspedisi.nextLine();
 
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
@@ -66,10 +71,8 @@ public static void main(String[] args){
                 System.out.println("\nUser Name dan Password salah");
             }
         }while (user!=1);
-            
-        //output
+    
         System.out.println("----------------");
-            
         while (kondisi){
             System.out.println("----------------------------------------");
             System.out.println("|           Menu :                     |");
