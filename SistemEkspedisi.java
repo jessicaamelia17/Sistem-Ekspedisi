@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Calendar;
 import java.util.Random;
 
-public class ekspedisi{ 
+public class SistemEkspedisi{ 
 public static void main(String[] args){
     
     Scanner ekspedisi = new Scanner(System.in);
