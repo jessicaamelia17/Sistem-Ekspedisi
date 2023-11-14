@@ -263,27 +263,29 @@ public static void main(String[] args){
                 break;
                 
                 case 3:
-                String[] dataAlmt = {"Malang", "Blitar", "Kediri", "Surabaya","Pasuruan", "Tulungagung", "Madiun",};  
-                System.out.print("Masukkan alamat tujuan paket yang dicari: ");
-                cari = ekspedisi.next();
-                
-                // Mencari data
-                index = -1;
-                for (int i = 0; i < dataAlmt.length; i++) {
-                    if (dataAlmt[i].equalsIgnoreCase(cari)) {
-                        index = i;
+                System.out.print("Masukkan nomor resi yang ingin dilacak: ");
+                String nomorResi = ekspedisi.next();
+                boolean ditemukan = false;
+
+                for (int i = 1; i < l; i++) {
+                    if (nomorResi.equals(dataEkspedisi[i][0])) {
+                        ditemukan = true;
+                        System.out.println("Status Pengiriman:");
+                        System.out.println("No Resi: " + dataEkspedisi[i][0]);
+                        System.out.println("Status: Paket sedang dikirim");
+                        System.out.println("Pengirim: " + dataEkspedisi[i][1]);
+                        System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
+                        System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
+                        System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
                         break;
                     }
                 }
 
-                // Menampilkan hasil pencarian
-                if (index != -1) {
-                    System.out.println("Alamat tujuan " + cari + " ditemukan pada indeks ke-" + index);
-                } else {
-                    System.out.println("Alamat tujuan " + cari + " tidak ditemukan");
+                if (!ditemukan) {
+                    System.out.println("Nomor resi tidak ditemukan.");
                 }
-            
-                    break;
+                break;
+
                 case 4:
                 Calendar cal = Calendar.getInstance();
                 int hariIni = cal.get(Calendar.DAY_OF_MONTH);
