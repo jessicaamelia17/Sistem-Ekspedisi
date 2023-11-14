@@ -11,8 +11,8 @@ public static void main(String[] args){
     String [][] dataEkspedisi = new String [100][10];
     String [][] akun = { 
         //Nama
-        {"Jessica Amelia"}, { "Lovelyta Sekarayu Krisdiyanti"},
-        {"Moh. Syifa'ul Faj Ismunir"}
+        {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
+        {"Moh. Syifa'ul"}
     };
     int [][] password = {
         {112233}, {445566}, {778899}
