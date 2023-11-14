@@ -265,26 +265,7 @@ public static void main(String[] args){
                 break;
                 
                 case 3:
-                String[] dataAlmt = {"Malang", "Blitar", "Kediri", "Surabaya","Pasuruan", "Tulungagung", "Madiun",};  
-                System.out.print("Masukkan alamat tujuan paket yang dicari: ");
-                cari = ekspedisi.next();
-                
-                // Mencari data
-                index = -1;
-                for (int i = 0; i < dataAlmt.length; i++) {
-                    if (dataAlmt[i].equalsIgnoreCase(cari)) {
-                        index = i;
-                        break;
-                    }
-                }
 
-                // Menampilkan hasil pencarian
-                if (index != -1) {
-                    System.out.println("Alamat tujuan " + cari + " ditemukan pada indeks ke-" + index);
-                } else {
-                    System.out.println("Alamat tujuan " + cari + " tidak ditemukan");
-                }
-            
                     break;
                 case 4:
                 Calendar cal = Calendar.getInstance();
