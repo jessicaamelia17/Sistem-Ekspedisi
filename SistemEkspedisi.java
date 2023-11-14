@@ -15,7 +15,7 @@ public static void main(String[] args){
         {"Moh. Syifa'ul Faj Ismunir"}
     };
     int [][] password = {
-        {230403}, {445566}, {778899}
+        {112233}, {445566}, {778899}
     };
     String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
     int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
@@ -23,7 +23,7 @@ public static void main(String[] args){
     char jawab;
     double biaya=0, totalBiaya=0.0;
     long no_hp, no_hp_penerima;
-    int maxPaket = 15;
+    int maxPaket = 15, user = -1;
     double [] berat = new double [20];
     Boolean kondisi = true, online = true;
     double pendapatanHarian = 0;
@@ -49,22 +49,23 @@ public static void main(String[] args){
             String inputNama = ekspedisi.nextLine();
             System.out.print("Masukkan Password      : ");
             int inputPin = ekspedisi.nextInt();
+            ekspedisi.nextLine();
 
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
-                    online = true;
+                    user = 1;
                     System.out.println("-------------------------------");
                     System.out.println("\tLogin Berhasil!");
                     System.out.println("-------------------------------");
                     break;
                 }
             }
-            if (online==true){
+            if (user==1){
                 continue;
             }else {
                 System.out.println("\nUser Name dan Password salah");
             }
-        }while (!online);
+        }while (user!=1);
             
         //output
         System.out.println("----------------");
@@ -310,7 +311,7 @@ public static void main(String[] args){
 
                 case 5:
                     kondisi=false;
-                     System.out.println("Terima kasih!");
+                     System.out.println("Terima kasih telah menggunakan layanan ekspedisi kami");
                     
                     
 
