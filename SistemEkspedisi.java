@@ -17,7 +17,6 @@ public static void main(String[] args){
     int [][] password = {
         {112233}, {445566}, {778899}
     };
-    int user = -1;
     String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
     int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
     String[] isi_barang = new String[50];
@@ -50,9 +49,9 @@ public static void main(String[] args){
         //output
  
         do {
-            System.out.print("\nMasukkan User Name      : ");
+            System.out.print("\nMasukkan Username      : ");
             String inputNama = ekspedisi.nextLine();
-            System.out.print("Masukkan Password anda    : ");
+            System.out.print("Masukkan Password      : ");
             int inputPin = ekspedisi.nextInt();
             ekspedisi.nextLine();
 
@@ -237,7 +236,7 @@ public static void main(String[] args){
                             dataEkspedisi[l][7] = kotaTujuan;
                             dataEkspedisi[l][8] = penerima;
                             dataEkspedisi[l][9] = Long.toString(no_hp_penerima)+"";
-                        l++;
+                       l++;
                         System.out.println("Data ekspedisi berhasil ditambahkan.");
                         } else {
                             System.out.println("Kota asal atau kota tujuan tidak tersedia.");
@@ -310,12 +309,9 @@ public static void main(String[] args){
                 System.out.println("    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
                 System.out.println("----------------------------------------");
                     break;
-
                 case 5:
                     kondisi=false;
                      System.out.println("Terima kasih telah menggunakan layanan kami");
-                    
-                    
 
                 default:
                     System.out.println();
