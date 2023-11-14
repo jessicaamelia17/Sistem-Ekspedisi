@@ -98,7 +98,7 @@ public static void main(String[] args){
                         System.out.println("Berikut adalah isi barang yang akan dipaketkan : ");
                         for (String barang : isi_barang){
                             if (barang != null){
-                            System.out.println(barang );
+                                System.out.println(barang );
                             }
                         }
                         System.out.println("Jumlah barang yang akan dikirimkan : " + jml);
