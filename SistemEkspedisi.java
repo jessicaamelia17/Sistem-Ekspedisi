@@ -15,8 +15,9 @@ public static void main(String[] args){
         {"Moh. Syifa'ul Faj Ismunir"}
     };
     int [][] password = {
-        {112233}, {445566}, {778899}
+        {230403}, {445566}, {778899}
     };
+    int user = -1;
     String  pengirim, penerima, layanan, cari, kotaAsal, kotaTujuan;
     int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
     String[] isi_barang = new String[50];
@@ -26,7 +27,7 @@ public static void main(String[] args){
     int maxPaket = 15;
     int  index;
     double [] berat = new double [20];
-    Boolean kondisi = true, online = true;
+    Boolean kondisi = true;
     double pendapatanHarian = 0;
     double pendapatanBulanan = 0;
     int bulanIni = -1;
@@ -41,43 +42,40 @@ public static void main(String[] args){
       {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
       {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
         };
-        System.out.println("----------------------------------");
-        System.out.println("\tSELAMAT DATANG DI ");
-        System.out.println("\tEKSPEDISI JLS FAST");
-        System.out.println("----------------------------------");
-        
-        //output
- 
+        System.out.println("---------------------------");
+        System.out.println("\tSELAMAT DATANG DI EKSPEDISI JLS FAST");
+        System.out.println("---------------------------");
         do {
-            System.out.print("\nMasukkan Username      : ");
+            System.out.print("\nMasukkan User Name      : ");
             String inputNama = ekspedisi.nextLine();
-            System.out.print("Masukkan Password      : ");
+            System.out.print("Masukkan Password anda    : ");
             int inputPin = ekspedisi.nextInt();
-            ekspedisi.nextLine();
 
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
-                    online=true;
+                    user = 1;
                     System.out.println("-------------------------------");
                     System.out.println("\tLogin Berhasil!");
                     System.out.println("-------------------------------");
                     break;
                 }
             }
-            if (online==true){
+            if (user==1){
                 continue;
             }else {
                 System.out.println("\nUser Name dan Password salah");
             }
-        }while (!online);
-    
+        }while (user!=1);
+            
+        //output
         System.out.println("----------------");
+            
         while (kondisi){
             System.out.println("----------------------------------------");
             System.out.println("|           Menu :                     |");
             System.out.println("|   1. Buat Paket/Tambah Paket         |");
             System.out.println("|   2. Data Ekspedisi                  |");
-            System.out.println("|   3. Cari Paket                      |");
+            System.out.println("|   3. Lacak Pesanan                   |");
             System.out.println("|   4. Riwayat layanan                 |");
             System.out.println("|   5. Keluar                          |");
             System.out.println("----------------------------------------");
@@ -236,7 +234,7 @@ public static void main(String[] args){
                             dataEkspedisi[l][7] = kotaTujuan;
                             dataEkspedisi[l][8] = penerima;
                             dataEkspedisi[l][9] = Long.toString(no_hp_penerima)+"";
-                       l++;
+                        l++;
                         System.out.println("Data ekspedisi berhasil ditambahkan.");
                         } else {
                             System.out.println("Kota asal atau kota tujuan tidak tersedia.");
@@ -265,7 +263,26 @@ public static void main(String[] args){
                 break;
                 
                 case 3:
+                String[] dataAlmt = {"Malang", "Blitar", "Kediri", "Surabaya","Pasuruan", "Tulungagung", "Madiun",};  
+                System.out.print("Masukkan alamat tujuan paket yang dicari: ");
+                cari = ekspedisi.next();
+                
+                // Mencari data
+                index = -1;
+                for (int i = 0; i < dataAlmt.length; i++) {
+                    if (dataAlmt[i].equalsIgnoreCase(cari)) {
+                        index = i;
+                        break;
+                    }
+                }
 
+                // Menampilkan hasil pencarian
+                if (index != -1) {
+                    System.out.println("Alamat tujuan " + cari + " ditemukan pada indeks ke-" + index);
+                } else {
+                    System.out.println("Alamat tujuan " + cari + " tidak ditemukan");
+                }
+            
                     break;
                 case 4:
                 Calendar cal = Calendar.getInstance();
@@ -290,9 +307,12 @@ public static void main(String[] args){
                 System.out.println("    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
                 System.out.println("----------------------------------------");
                     break;
+
                 case 5:
                     kondisi=false;
-                     System.out.println("Terima kasih telah menggunakan layanan kami");
+                     System.out.println("Terima kasih!");
+                    
+                    
 
                 default:
                     System.out.println();
