@@ -23,9 +23,9 @@ public static void main(String[] args){
     char jawab;
     double biaya=0, totalBiaya=0.0;
     long no_hp, no_hp_penerima;
-    int maxPaket = 15, user = -1;
+    int maxPaket = 15;
     double [] berat = new double [20];
-    Boolean kondisi = true, online = true;
+    Boolean kondisi = true, online = false;
     double pendapatanHarian = 0;
     double pendapatanBulanan = 0;
     int bulanIni = -1;
@@ -53,19 +53,19 @@ public static void main(String[] args){
 
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
-                    user = 1;
+                    online = true;
                     System.out.println("-------------------------------");
                     System.out.println("\tLogin Berhasil!");
                     System.out.println("-------------------------------");
                     break;
                 }
             }
-            if (user==1){
+            if (online==true){
                 continue;
             }else {
                 System.out.println("\nUser Name dan Password salah");
             }
-        }while (user!=1);
+        }while (!online);
             
         //output
         System.out.println("----------------");
