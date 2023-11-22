@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class SistemEkspedisi{ 
     //Deklarasi
-    static String [][] dataEkspedisi = new String [100][10];
-    static String [][] akun = { 
+    String [][] dataEkspedisi = new String [100][10];
+    String [][] akun = { 
         //Nama
         {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
         {"Moh. Syifa'ul"}
