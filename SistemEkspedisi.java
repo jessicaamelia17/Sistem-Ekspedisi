@@ -3,7 +3,9 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
+public static void main(String[] args){
     
+    Scanner ekspedisi = new Scanner(System.in);
     
     //Deklarasi
     static String [][] dataEkspedisi = new String [100][10];
@@ -28,20 +30,16 @@ public class SistemEkspedisi{
     static double pendapatanBulanan = 0;
     static int bulanIni = -1;
     // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
-    static int[][] biayaEkspedisi = {
-        // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
-        {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
-        {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
-        {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
-        {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
-        {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
-        {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
-        {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
-    };
-    static Scanner ekspedisi = new Scanner(System.in);
-    public static void main(String[] args){
- 
-        System.out.println("----------------");
+    int[][] biayaEkspedisi = {
+    // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
+      {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
+      {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
+      {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
+      {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
+      {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
+      {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
+      {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
+        };
         System.out.println("---------------------------------");
         System.out.println("\tSELAMAT DATANG DI ");
         System.out.println("\tEKSPEDISI JLS FAST");
@@ -52,7 +50,7 @@ public class SistemEkspedisi{
             System.out.print("Masukkan Password      : ");
             int inputPin = ekspedisi.nextInt();
             ekspedisi.nextLine();
-            
+
             for (int i = 0; i < akun.length; i++) {
                 if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
                     online = true;
@@ -68,14 +66,10 @@ public class SistemEkspedisi{
                 System.out.println("\nUser Name dan Password salah");
             }
         }while (!online);
-        menuUtama();
-    }
-
-    
-    
-       
+            
         //output
-        static void menuUtama(){
+        System.out.println("----------------");
+            
         while (kondisi){
             System.out.println("----------------------------------------");
             System.out.println("|           Menu :                     |");
@@ -86,6 +80,7 @@ public class SistemEkspedisi{
             System.out.println("|   5. Keluar                          |");
             System.out.println("----------------------------------------");
             System.out.print("Pilih menu : ");
+   
             int pilihan = ekspedisi.nextInt();
 
             switch (pilihan){
@@ -324,9 +319,4 @@ public class SistemEkspedisi{
                     System.out.println("Pilihan tidak valid");
                     break;
         }
-    }
-}
-
-
-    
-    }
+    }}}
