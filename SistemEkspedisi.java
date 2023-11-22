@@ -8,7 +8,7 @@ public class SistemEkspedisi{
     //Deklarasi
     static String [][] dataEkspedisi = new String [100][10];
     static String [][] akun = { 
-        //Nama
+        //Nama akun
         {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
         {"Moh. Syifa'ul"}
     };
