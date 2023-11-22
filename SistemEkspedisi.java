@@ -7,7 +7,7 @@ public class SistemEkspedisi{
     static String [][] dataEkspedisi = new String [100][10];
     static String [][] akun = { 
         //Nama akun
-        {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
+        {"Jessica Amelia"}, { "Lovelyta"},
         {"Moh. Syifa'ul"}
     };
     static int [][] password = {
