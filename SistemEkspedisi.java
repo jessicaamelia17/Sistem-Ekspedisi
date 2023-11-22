@@ -3,9 +3,11 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
+    
+    
     //Deklarasi
-    String [][] dataEkspedisi = new String [100][10];
-    String [][] akun = { 
+    static String [][] dataEkspedisi = new String [100][10];
+    static String [][] akun = { 
         //Nama
         {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
         {"Moh. Syifa'ul"}
@@ -45,7 +47,7 @@ public class SistemEkspedisi{
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
     }
-  
+    
     static void login(){
     do {
         System.out.print("\nMasukkan Username      : ");
@@ -323,4 +325,8 @@ public class SistemEkspedisi{
                     break;
         }
     }
-}}
+}
+
+
+    
+    }
