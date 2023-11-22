@@ -39,12 +39,15 @@ public class SistemEkspedisi{
     static Scanner ekspedisi = new Scanner(System.in);
     public static void main(String[] args){
         System.out.println("----------------");
+        pesan();
+        login();
+        menuUtama();
+    }
+    static void pesan(){
         System.out.println("---------------------------------");
         System.out.println("\tSELAMAT DATANG DI ");
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
-        login();
-        menuUtama();
     }
     static void login(){
         do {
