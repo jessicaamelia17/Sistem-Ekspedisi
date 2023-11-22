@@ -1,4 +1,4 @@
- import java.util.Scanner;
+import java.util.Scanner;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -39,14 +39,16 @@ public class SistemEkspedisi{
     static Scanner ekspedisi = new Scanner(System.in);
     public static void main(String[] args){
         System.out.println("----------------");
-        System.out.println("---------------------------------");
-        System.out.println("\tSELAMAT DATANG DI ");
-        System.out.println("\tEKSPEDISI JLS FAST");
-        System.out.println("---------------------------------");
+        pesan();
         login();
         menuUtama();
     }
-    
+    static void pesan(){
+              System.out.println("---------------------------------");
+        System.out.println("\tSELAMAT DATANG DI ");
+        System.out.println("\tEKSPEDISI JLS FAST");
+        System.out.println("---------------------------------");
+    }
     static void login(){
         do {
             System.out.print("\nMasukkan Username      : ");
@@ -70,8 +72,7 @@ public class SistemEkspedisi{
                 System.out.println("\nUser Name dan Password salah");
             }
         }while (!online);
-        
-    }
+
        
         //output
         static void menuUtama(){
