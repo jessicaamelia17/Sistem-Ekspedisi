@@ -6,8 +6,8 @@ public class SistemEkspedisi{
     //Deklarasi
     static String [][] dataEkspedisi = new String [100][10];
     static String [][] akun = { 
-        //Nama
-        {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
+        //Nama akun
+        {"Jessica Amelia"}, { "Lovelyta"},
         {"Moh. Syifa'ul"}
     };
     static int [][] password = {
@@ -39,12 +39,15 @@ public class SistemEkspedisi{
     static Scanner ekspedisi = new Scanner(System.in);
     public static void main(String[] args){
         System.out.println("----------------");
-        System.out.println("---------------------------------");
+        pesan();
+        login();
+        menuUtama();
+    }
+    static void pesan(){
+              System.out.println("---------------------------------");
         System.out.println("\tSELAMAT DATANG DI ");
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
-        login();
-        menuUtama();
     }
     static void login(){
         do {
@@ -70,8 +73,6 @@ public class SistemEkspedisi{
             }
         }while (!online);
 
-    }
-  
        
         //output
         static void menuUtama(){
@@ -317,7 +318,7 @@ public class SistemEkspedisi{
                 case 5:
                     kondisi=false;
                      System.out.println("Terima kasih telah menggunakan layanan ekspedisi kami");
-                    
+                    break;
                     
 
                 default:
@@ -326,7 +327,4 @@ public class SistemEkspedisi{
         }
     }
 }
-
-
-    
     }
