@@ -3,8 +3,6 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
-    
-    
     //Deklarasi
     static String [][] dataEkspedisi = new String [100][10];
     static String [][] akun = { 
