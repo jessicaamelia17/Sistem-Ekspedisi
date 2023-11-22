@@ -45,6 +45,11 @@ public class SistemEkspedisi{
         System.out.println("\tSELAMAT DATANG DI ");
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
+        login();
+        menuUtama();
+    }
+    
+    static void login(){
         do {
             System.out.print("\nMasukkan Username      : ");
             String inputNama = ekspedisi.nextLine();
@@ -67,10 +72,8 @@ public class SistemEkspedisi{
                 System.out.println("\nUser Name dan Password salah");
             }
         }while (!online);
-        menuUtama();
+        
     }
-    
-  
        
         //output
         static void menuUtama(){
