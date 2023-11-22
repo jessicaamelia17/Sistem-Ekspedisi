@@ -3,73 +3,75 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class SistemEkspedisi{ 
-public static void main(String[] args){
-    
-    Scanner ekspedisi = new Scanner(System.in);
-    
     //Deklarasi
-    String [][] dataEkspedisi = new String [100][10];
-    String [][] akun = { 
+    static String [][] dataEkspedisi = new String [100][10];
+    static String [][] akun = { 
         //Nama
         {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
         {"Moh. Syifa'ul"}
     };
-    int [][] password = {
+    static int [][] password = {
         {112233}, {445566}, {778899}
     };
-    String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
-    int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
-    String[] isi_barang = new String[50];
-    char jawab;
-    double biaya=0, totalBiaya=0.0;
-    long no_hp, no_hp_penerima;
-    int maxPaket = 15;
-    double [] berat = new double [20];
-    Boolean kondisi = true, online = false;
-    double pendapatanHarian = 0;
-    double pendapatanBulanan = 0;
-    int bulanIni = -1;
+    static String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
+    static int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
+    static String[] isi_barang = new String[50];
+    static char jawab;
+    static double biaya=0, totalBiaya=0.0;
+    static long no_hp, no_hp_penerima;
+    static int maxPaket = 15;
+    static double [] berat = new double [20];
+    static Boolean kondisi = true, online = false;
+    static double pendapatanHarian = 0;
+    static double pendapatanBulanan = 0;
+    static int bulanIni = -1;
     // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
-    int[][] biayaEkspedisi = {
-    // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
-      {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
-      {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
-      {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
-      {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
-      {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
-      {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
-      {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
-        };
+    static int[][] biayaEkspedisi = {
+        // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
+        {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
+        {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
+        {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
+        {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
+        {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
+        {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
+        {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
+    };
+    static Scanner ekspedisi = new Scanner(System.in);
+    public static void main(String[] args){
+        login();
+        System.out.println("----------------");
         System.out.println("---------------------------------");
         System.out.println("\tSELAMAT DATANG DI ");
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
-        do {
-            System.out.print("\nMasukkan Username      : ");
-            String inputNama = ekspedisi.nextLine();
-            System.out.print("Masukkan Password      : ");
-            int inputPin = ekspedisi.nextInt();
-            ekspedisi.nextLine();
-
-            for (int i = 0; i < akun.length; i++) {
-                if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
-                    online = true;
-                    System.out.println("-------------------------------");
-                    System.out.println("\tLogin Berhasil!");
-                    System.out.println("-------------------------------");
-                    break;
-                }
+    }
+  
+    static void login(){
+    do {
+        System.out.print("\nMasukkan Username      : ");
+        String inputNama = ekspedisi.nextLine();
+        System.out.print("Masukkan Password      : ");
+        int inputPin = ekspedisi.nextInt();
+        ekspedisi.nextLine();
+        
+        for (int i = 0; i < akun.length; i++) {
+            if (inputNama.equals(akun[i][0]) && inputPin == password[i][0]) {
+                online = true;
+                System.out.println("-------------------------------");
+                System.out.println("\tLogin Berhasil!");
+                System.out.println("-------------------------------");
+                break;
             }
-            if (online==true){
-                continue;
-            }else {
-                System.out.println("\nUser Name dan Password salah");
-            }
-        }while (!online);
-            
+        }
+        if (online==true){
+            continue;
+        }else {
+            System.out.println("\nUser Name dan Password salah");
+        }
+    }while (!online);
+    
+       
         //output
-        System.out.println("----------------");
-            
         while (kondisi){
             System.out.println("----------------------------------------");
             System.out.println("|           Menu :                     |");
@@ -80,6 +82,7 @@ public static void main(String[] args){
             System.out.println("|   5. Keluar                          |");
             System.out.println("----------------------------------------");
             System.out.print("Pilih menu : ");
+   
             int pilihan = ekspedisi.nextInt();
 
             switch (pilihan){
@@ -319,4 +322,5 @@ public static void main(String[] args){
                     System.out.println();
                     break;
         }
-    }}}
+    }
+}}
