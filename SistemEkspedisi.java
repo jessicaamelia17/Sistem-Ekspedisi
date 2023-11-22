@@ -10,7 +10,7 @@ public static void main(String[] args){
     //Deklarasi
     String [][] dataEkspedisi = new String [100][10];
     String [][] akun = { 
-        //Nama
+        //Nama akun
         {"Jessica Amelia"}, { "Lovelyta Sekarayu"},
         {"Moh. Syifa'ul"}
     };
