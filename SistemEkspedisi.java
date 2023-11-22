@@ -317,7 +317,7 @@ public class SistemEkspedisi{
                 case 5:
                     kondisi=false;
                      System.out.println("Terima kasih telah menggunakan layanan ekspedisi kami");
-                    
+                    break;
                     
 
                 default:
