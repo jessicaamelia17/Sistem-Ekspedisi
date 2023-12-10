@@ -106,6 +106,7 @@ public class SistemEkspedisi{
             switch (pilihan){
                 case 1:
                 buatPaket();
+                strukPembayaran(dataEkspedisi[l - 1][0]); 
                 break;
                 
                 case 2:
@@ -358,5 +359,32 @@ public class SistemEkspedisi{
         System.out.println("    Pendapatan Bulanan:  Rp " + pendapatanBulanan);
         System.out.println("----------------------------------------");
     }
+    static void strukPembayaran(String nomorResi) {
+        boolean ditemukan = false;
+        for (int i = 1; i < l; i++) {
+            if (nomorResi.equals(dataEkspedisi[i][0])) {
+                ditemukan = true;
+                System.out.println("---------------------------");
+                System.out.println("       Struk Pembayaran");
+                System.out.println("---------------------------");
+                System.out.println("No Resi: " + dataEkspedisi[i][0]);
+                System.out.println("Pengirim: " + dataEkspedisi[i][1]);
+                System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
+                System.out.println("Isi Barang: " + dataEkspedisi[i][3]);
+                System.out.println("Layanan: " + dataEkspedisi[i][4]);
+                System.out.println("Ongkos Kirim: Rp " + dataEkspedisi[i][5]);
+                System.out.println("Berat Paket: " + dataEkspedisi[i][6] + " Kg");
+                System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
+                System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
+                System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
+                System.out.println("---------------------------");
+                break;
+            }
+        }
+        if (!ditemukan) {
+            System.out.println("Nomor resi tidak ditemukan.");
+        }
+    }
+    
 
     }
