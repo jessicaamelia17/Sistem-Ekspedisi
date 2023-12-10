@@ -46,7 +46,6 @@ public class SistemEkspedisi{
     static boolean isAdmin = false;
     static void menuLogin(){
         do {
-            
             System.out.print("\nMasukkan Username: ");
             String inputUsername = ekspedisi.nextLine();
             System.out.print("Masukkan Password: ");
