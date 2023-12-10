@@ -57,7 +57,7 @@ public class SistemEkspedisi{
     
             System.out.print("Pilih peran (1-4): ");
             int choice = ekspedisi.nextInt();
-            ekspedisi.nextLine();  // Membuang karakter newline dari buffer
+            ekspedisi.nextLine();  // Membuang karakter newline 
     
             switch (choice) {
                 case 1:
