@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.Date;
 
 public class SistemEkspedisi{ 
-    //Deklarasi
     static String [][] dataEkspedisi = new String [100][10];
     static String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
     static int  jml=0, l=1, indeksKotaAsal, indeksKotaTujuan;
