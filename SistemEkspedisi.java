@@ -19,7 +19,6 @@ public class SistemEkspedisi{
     static double pendapatanHarian = 0;
     static double pendapatanBulanan = 0;
     static int bulanIni = -1;
-    // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
     static int[][] biayaEkspedisi = {
         // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
         {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
