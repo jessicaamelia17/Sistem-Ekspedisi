@@ -211,7 +211,7 @@ public class SistemEkspedisi{
                     case 2:
                         System.out.print("Masukkan bulan (MM): ");
                         String bulanInput = ekspedisi.next();
-                        double pendapatanBulan = hitungPendapatanBulananRekursif(bulanInput, pilihan);
+                        double pendapatanBulan = hitungPendapatanBulanan(bulanInput);
                         System.out.println("Laporan Pendapatan Bulanan untuk bulan " + bulanInput + ": Rp " + pendapatanBulan);
                         break;
                     case 3:
@@ -537,18 +537,17 @@ public class SistemEkspedisi{
         }
     }
 
-    public static double hitungPendapatanBulananRekursif(String bulan, int index) {
-        if (index < l) {
-            String tanggalPemesanan = dataEkspedisi[index][10];
-            String[] tanggalPemesananSplit = tanggalPemesanan.split("-");
-            if (bulan.equals(tanggalPemesananSplit[1])) {
-                return Double.parseDouble(dataEkspedisi[index][5]) + hitungPendapatanBulananRekursif(bulan, index + 1);
-            } else {
-                return hitungPendapatanBulananRekursif(bulan, index + 1);
-            }
+     static double hitungPendapatanBulanan(String bulan) {
+        double pendapatan = 0;
+        for (int i = 1; i < l; i++) {
+          String tanggalPemesanan = dataEkspedisi[i][10];
+          String[] tanggalPemesananSplit = tanggalPemesanan.split("/");
+          if (bulan.equals(tanggalPemesananSplit[1])) {
+            pendapatan += Double.parseDouble(dataEkspedisi[i][5]);
+          }
         }
-        return 0;
-    }
+        return pendapatan;
+      }
 
       static boolean strukPembayaran(String nomorResi) {
         int uangTransfer=0, uangTunai=0;
