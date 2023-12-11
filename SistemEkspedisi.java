@@ -204,9 +204,9 @@ public class SistemEkspedisi{
 
                 switch (pilihan) {
                     case 1:
-                        // Tampilkan laporan pendapatan untuk admin
-                        System.out.println("Laporan Pendapatan Harian: Rp " + pendapatanHarian);
-
+                        Date currentDate = new Date();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        System.out.println("Laporan Pendapatan Harian (" + dateFormat.format(currentDate) + "): Rp " + pendapatanHarian);
                         break;
                     case 2:
                         System.out.print("Masukkan bulan (MM): ");
@@ -250,6 +250,10 @@ public class SistemEkspedisi{
                             } while (!cetakstruk);
                             break;
                         case 2:
+                        Date currentDate = new Date();
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        System.out.println("Tanggal dan Waktu saat mencetak label: " + dateFormat.format(currentDate));
+
                         System.out.print("Masukkan nomor resi untuk mencetak label: ");
                         String nomorResi = ekspedisi.next();
                         boolean ditemukan = printLabel(nomorResi);
