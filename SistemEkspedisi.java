@@ -231,7 +231,6 @@ public class SistemEkspedisi{
                     System.out.println("-----------------------------");
                     System.out.println("|        Menu Kasir         |");
                     System.out.println("-----------------------------");
-                    // Tambahkan opsi-opsi menu kasir sesuai kebutuhan
                     System.out.println("1. Proses Pembayaran");
                     System.out.println("2. Cetal Label");
                     System.out.println("3. Keluar");
