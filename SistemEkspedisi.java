@@ -211,7 +211,7 @@ public class SistemEkspedisi{
                     case 2:
                         System.out.print("Masukkan bulan (MM): ");
                         String bulanInput = ekspedisi.next();
-                        double pendapatanBulan = hitungPendapatanBulanan(bulanInput);
+                        double pendapatanBulan = hitungPendapatanBulananRekursif(bulanInput, pilihan);
                         System.out.println("Laporan Pendapatan Bulanan untuk bulan " + bulanInput + ": Rp " + pendapatanBulan);
                         break;
                     case 3:
@@ -241,7 +241,7 @@ public class SistemEkspedisi{
                         case 1:
                             boolean cetakstruk = false;
                             do {
-                                System.out.print("Masukkan nomor resi yang ingin dicetak label: ");
+                                System.out.print("Masukkan nomor resi yang ingin dibayar: ");
                                 String nomorResistruk = ekspedisi.next();
                                 cetakstruk = strukPembayaran(nomorResistruk);
                                 if (!cetakstruk) {
@@ -320,27 +320,35 @@ public class SistemEkspedisi{
                     do {
                         System.out.print("Isi barang: ");
                         isi_barang[jml][0] = ekspedisi.next();
+            
                         System.out.print("Jumlah item: ");
                         isi_barang[jml][1] = ekspedisi.next();
                         jml++;
-                
+            
                         if (jml < maxBarang) {
                             System.out.print("Apakah anda ingin menambahkan barang (Y/T)? ");
                             jawab = ekspedisi.next().charAt(0);
+            
+                            // Validasi input hanya 'Y' atau 'T'
+                            while (jawab != 'Y' && jawab != 'y' && jawab != 'T' && jawab != 't') {
+                                System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
+                                System.out.print("Apakah anda ingin menambahkan barang (Y/T)? ");
+                                jawab = ekspedisi.next().charAt(0);
+                            }
                         } else {
                             System.out.println("Maksimum barang tercapai. Tidak dapat menambahkan barang lagi.");
                             break;
                         }
-                
+            
                     } while (jawab == 'Y' || jawab == 'y');
-                
+            
                     System.out.println("-----------------------------");
                     System.out.println("Berikut adalah isi barang yang akan dipaketkan : ");
-                    
+            
                     for (int i = 0; i < jml; i++) {
                         System.out.println("Nama Barang: " + isi_barang[i][0] + ", Jumlah item: " + isi_barang[i][1]);
                     }
-                
+            
                     System.out.println("Jumlah barang yang akan dikirimkan : " + jml);
                 }
                 
@@ -470,7 +478,7 @@ public class SistemEkspedisi{
                 dataEkspedisi[l][2] = Long.toString(no_hp);
                 dataEkspedisi[l][3] = " ";
                 for (int i = 0; i < jml; i++) {
-                    dataEkspedisi[l][3] += isi_barang[i][0] +" " + isi_barang[i][1] + " item" +",";
+                    dataEkspedisi[l][3] += isi_barang[i][0] +" " + isi_barang[i][1] + " item" +", ";
                 }
                 dataEkspedisi[l][4] = layanan;
                 dataEkspedisi[l][5] = Double.toString(totalBiaya);
@@ -478,7 +486,7 @@ public class SistemEkspedisi{
                 dataEkspedisi[l][7] = kotaTujuan;
                 dataEkspedisi[l][8] = penerima;
                 dataEkspedisi[l][9] = Long.toString(no_hp_penerima)+"";
-                dataEkspedisi[l][10] = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                dataEkspedisi[l][10] = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
             l++;
             System.out.println("Data ekspedisi berhasil ditambahkan.");
             } else {
@@ -529,20 +537,20 @@ public class SistemEkspedisi{
         }
     }
 
-    public static double hitungPendapatanBulanan(String bulan) {
-        double pendapatan = 0;
-        for (int i = 1; i < l; i++) {
-          String tanggalPemesanan = dataEkspedisi[i][10];
-          String[] tanggalPemesananSplit = tanggalPemesanan.split("-");
-          if (bulan.equals(tanggalPemesananSplit[1])) {
-            pendapatan += Double.parseDouble(dataEkspedisi[i][5]);
-          }
+    public static double hitungPendapatanBulananRekursif(String bulan, int index) {
+        if (index < l) {
+            String tanggalPemesanan = dataEkspedisi[index][10];
+            String[] tanggalPemesananSplit = tanggalPemesanan.split("-");
+            if (bulan.equals(tanggalPemesananSplit[1])) {
+                return Double.parseDouble(dataEkspedisi[index][5]) + hitungPendapatanBulananRekursif(bulan, index + 1);
+            } else {
+                return hitungPendapatanBulananRekursif(bulan, index + 1);
+            }
         }
-        return pendapatan;
-      }
+        return 0;
+    }
 
       static boolean strukPembayaran(String nomorResi) {
-        Scanner scanner = new Scanner(System.in);
         int uangTransfer=0, uangTunai=0;
         boolean ditemukan = false;
 
@@ -575,7 +583,7 @@ public class SistemEkspedisi{
                 System.out.println("1. Tunai");
                 System.out.println("2. Transfer");
                 System.out.print("Masukkan pilihan (1/2): ");
-                int pilihanMetode = scanner.nextInt();
+                int pilihanMetode = ekspedisi.nextInt();
 
                 double totalHarga = Double.parseDouble(dataEkspedisi[i][5]);
 
@@ -583,7 +591,7 @@ public class SistemEkspedisi{
                     case 1:
                         // Metode pembayaran tunai
                         System.out.print("Masukkan nominal uang yang dibayar: Rp ");
-                         uangTunai = scanner.nextInt();
+                         uangTunai = ekspedisi.nextInt();
 
                         if (uangTunai >= totalHarga) {
                             double kembalian = uangTunai - totalHarga;
@@ -597,7 +605,7 @@ public class SistemEkspedisi{
                     case 2:
                         // Metode pembayaran transfer
                         System.out.print("Masukkan nominal uang yang ditransfer: Rp ");
-                         uangTransfer = scanner.nextInt();
+                         uangTransfer = ekspedisi.nextInt();
                         System.out.println("Silakan transfer ke rekening xxx-xxx-xxxx a/n Sistem Ekspedisi.");
 
                         if (uangTransfer == totalHarga) {
@@ -617,6 +625,7 @@ public class SistemEkspedisi{
                 System.out.println("---------------------------");
                 System.out.println("       Struk Pembayaran");
                 System.out.println("---------------------------");
+                System.out.println("Tanggal Cetak: " + sdf.format(currentDate));
                 System.out.println("No Resi: " + dataEkspedisi[i][0]);
                 System.out.println("Metode Pembayaran: " + (pilihanMetode == 1 ? "Tunai" : "Transfer"));
                 System.out.println("Nominal Uang Dibayar: Rp " + (pilihanMetode == 1 ? uangTunai : uangTransfer));
