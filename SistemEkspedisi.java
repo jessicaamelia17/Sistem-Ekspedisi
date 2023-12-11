@@ -231,7 +231,6 @@ public class SistemEkspedisi{
                     System.out.println("-----------------------------");
                     System.out.println("|        Menu Kasir         |");
                     System.out.println("-----------------------------");
-                    // Tambahkan opsi-opsi menu kasir sesuai kebutuhan
                     System.out.println("1. Proses Pembayaran");
                     System.out.println("2. Cetal Label");
                     System.out.println("3. Keluar");
@@ -251,16 +250,14 @@ public class SistemEkspedisi{
                             } while (!cetakstruk);
                             break;
                         case 2:
-                            boolean cetakLabelSuccess = false;
-                            do {
-                                System.out.print("Masukkan nomor resi yang ingin dicetak label: ");
-                                String nomorResiCetakKasir = ekspedisi.next();
-                                cetakLabelSuccess = cetakLabel(nomorResiCetakKasir);
-                                if (!cetakLabelSuccess) {
-                                    System.out.println("Nomor resi tidak ditemukan. Silakan coba lagi.");
-                                }
-                            } while (!cetakLabelSuccess);
-                            break;
+                        System.out.print("Masukkan nomor resi untuk mencetak label: ");
+                        String nomorResi = ekspedisi.next();
+                        boolean ditemukan = printLabel(nomorResi);
+                
+                        if (!ditemukan) {
+                            System.out.println("Nomor resi tidak ditemukan.");
+                        }
+                        break;
                         case 3:
                             online = false;
                             validInput = true;
@@ -271,6 +268,40 @@ public class SistemEkspedisi{
                     }
                 } while (!validInput);
             }
+
+            static boolean printLabel(String nomorResi) {
+                boolean ditemukan = false;
+
+                        for (int i = 1; i < l; i++) {
+                            if (nomorResi.equals(dataEkspedisi[i][0])) {
+                                ditemukan = true;
+                                generateLabel(dataEkspedisi[i]);
+                                break;
+                            }
+                        }
+                        return ditemukan;
+                        
+                    }
+                    
+                    static void generateLabel(String[] packageInfo) {
+                        System.out.println("---------- LABEL PENGIRIMAN ----------");
+                        System.out.println("No Resi: " + packageInfo[0]);
+                        System.out.println("Pengirim: " + packageInfo[1]);
+                        System.out.println("No HP Pengirim: " + packageInfo[2]);
+                        System.out.println("Isi barang: " + packageInfo[3]);
+                        System.out.println("Layanan: " + packageInfo[4]);
+                        System.out.println("Ongkos kirim: " + packageInfo[5]);
+                        System.out.println("Berat Paket: " + packageInfo[6] + " Kg");
+                        System.out.println("Alamat Tujuan: " + packageInfo[7]);
+                        System.out.println("Nama Penerima: " + packageInfo[8]);
+                        System.out.println("No HP Penerima: " + packageInfo[9]);
+                
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        Date currentDate = new Date();
+                        System.out.println("Tanggal Cetak: " + sdf.format(currentDate));
+                
+                        System.out.println("--------------------------------------");
+                }
             
             
             static void buatPaket (){
