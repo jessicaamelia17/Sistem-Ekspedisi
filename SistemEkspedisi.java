@@ -46,7 +46,6 @@ public class SistemEkspedisi{
     static String[][] dataPengguna = {{"Jessica Amelia", "J3ss!c4"}, {"Lovelyta", "L0v3"}, {"Syifaul", "12345"}};
     static String[][] dataAdmin = {{"Admin1", "123456"}, {"Admin2", "789012"}};
     static String[][] dataKasir = {{"Kasir1", "k4s!r1"}, {"Kasir2", "k4s!r2"}};
-    private static String kembalian;
 
     static void menuLogin() {
         char pilihanKembali;
@@ -242,7 +241,7 @@ public class SistemEkspedisi{
                         case 1:
                             boolean cetakstruk = false;
                             do {
-                                System.out.print("Masukkan nomor resi yang ingin dibayar: ");
+                                System.out.print("Masukkan nomor resi yang ingin dicetak label: ");
                                 String nomorResistruk = ekspedisi.next();
                                 cetakstruk = strukPembayaran(nomorResistruk);
                                 if (!cetakstruk) {
@@ -467,7 +466,7 @@ public class SistemEkspedisi{
                 dataEkspedisi[l][2] = Long.toString(no_hp);
                 dataEkspedisi[l][3] = " ";
                 for (int i = 0; i < jml; i++) {
-                    dataEkspedisi[l][3] += isi_barang[i][0] +" " + isi_barang[i][1] + " item" +", ";
+                    dataEkspedisi[l][3] += isi_barang[i][0] +" " + isi_barang[i][1] + " item" +",";
                 }
                 dataEkspedisi[l][4] = layanan;
                 dataEkspedisi[l][5] = Double.toString(totalBiaya);
@@ -475,7 +474,7 @@ public class SistemEkspedisi{
                 dataEkspedisi[l][7] = kotaTujuan;
                 dataEkspedisi[l][8] = penerima;
                 dataEkspedisi[l][9] = Long.toString(no_hp_penerima)+"";
-                dataEkspedisi[l][10] = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+                dataEkspedisi[l][10] = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
             l++;
             System.out.println("Data ekspedisi berhasil ditambahkan.");
             } else {
@@ -561,6 +560,10 @@ public class SistemEkspedisi{
                 System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
                 System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
                 System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                Date currentDate = new Date();
+                System.out.println("Tanggal Cetak: " + sdf.format(currentDate));
                 System.out.println("---------------------------");
 
                 // Meminta pengguna memilih metode pembayaran
@@ -613,7 +616,6 @@ public class SistemEkspedisi{
                 System.out.println("No Resi: " + dataEkspedisi[i][0]);
                 System.out.println("Metode Pembayaran: " + (pilihanMetode == 1 ? "Tunai" : "Transfer"));
                 System.out.println("Nominal Uang Dibayar: Rp " + (pilihanMetode == 1 ? uangTunai : uangTransfer));
-                System.out.println("Nominal Uang Kembalian : Rp " + (kembalian));
                 System.out.println("Status Pembayaran: " + dataEkspedisi[i][11]);
                 System.out.println("---------------------------");
                 
