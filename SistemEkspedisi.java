@@ -5,30 +5,6 @@ import java.util.Random;
 
 public class SistemEkspedisi{ 
     //Deklarasi
-    static String [][] dataEkspedisi = new String [100][50];
-    static String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
-    static int  l=1, indeksKotaAsal, indeksKotaTujuan;
-    static int maxBarang = 10; // Tentukan maksimum barang yang dapat dimasukkan
-    static String[][] isi_barang = new String[maxBarang][3]; // Kolom pertama untuk nama barang, kolom kedua untuk jumlah barang
-    static char jawab;
-    static double biaya=0, totalBiaya=0.0;
-    static long no_hp, no_hp_penerima;
-    static double berat;
-    static Boolean online = false;
-    static double pendapatanHarian = 0;
-    static double pendapatanBulanan = 0;
-    static int bulanIni = -1;
-    // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
-    static int[][] biayaEkspedisi = {
-        // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
-        {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
-        {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
-        {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
-        {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
-        {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
-        {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
-        {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
-    };
     static Scanner ekspedisi = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("----------------");
@@ -42,11 +18,12 @@ public class SistemEkspedisi{
         System.out.println("\tEKSPEDISI JLS FAST");
         System.out.println("---------------------------------");
     }
-
+    
     static String[][] dataPengguna = {{"Jessica Amelia", "J3ss!c4"}, {"Lovelyta", "L0v3"}, {"Syifaul", "12345"}};
     static String[][] dataAdmin = {{"Admin1", "123456"}, {"Admin2", "789012"}};
     static String[][] dataKasir = {{"Kasir1", "k4s!r1"}, {"Kasir2", "k4s!r2"}};
-
+    static Boolean online = false;
+    
     static void menuLogin() {
         char pilihanKembali;
         do {
@@ -56,14 +33,14 @@ public class SistemEkspedisi{
             System.out.println("1. Login sebagai Pengguna");
             System.out.println("2. Login sebagai Kasir");
             System.out.println("3. Login sebagai Admin");
-
+            
             System.out.print("Pilih peran (1-3): ");
             int choice = ekspedisi.nextInt();
             ekspedisi.nextLine();  // Membuang karakter newline dari buffer
-
+            
             switch (choice) {
                 case 1:
-                    if (login("pengguna", dataPengguna)) {
+                if (login("pengguna", dataPengguna)) {
                         online = true;
                         System.out.println("Login berhasil sebagai pengguna!");
                         menuPelanggan();
@@ -71,7 +48,7 @@ public class SistemEkspedisi{
                         System.out.println("Login gagal. Username atau password salah.");
                     }
                     break;
-                case 2:
+                    case 2:
                     if (login("kasir", dataKasir)) {
                         online = true;
                         System.out.println("Login berhasil sebagai kasir!");
@@ -80,7 +57,7 @@ public class SistemEkspedisi{
                         System.out.println("Login gagal. Username atau password salah.");
                     }
                     break;
-                case 3:
+                    case 3:
                     if (login("admin", dataAdmin)) {
                         online = true;
                         System.out.println("Login berhasil sebagai admin!");
@@ -89,14 +66,14 @@ public class SistemEkspedisi{
                         System.out.println("Login gagal. Username atau password salah.");
                     }
                     break;
-                default:
+                    default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi.");
                     break;
-            }
-
-            // Setelah keluar dari menu pengguna, kasir, atau admin, tanyakan apakah ingin kembali ke menu login
-            do {
-                System.out.print("Apakah Anda ingin kembali ke Menu Login? (Y/T): ");
+                }
+            
+                // Setelah keluar dari menu pengguna, kasir, atau admin, tanyakan apakah ingin kembali ke menu login
+                do {
+                    System.out.print("Apakah Anda ingin kembali ke Menu Login? (Y/T): ");
                 pilihanKembali = ekspedisi.next().charAt(0);
                 if (pilihanKembali != 'Y' && pilihanKembali != 'T') {
                     System.out.println("Pilihan tidak valid. Silakan masukkan Y atau T.");
@@ -104,25 +81,25 @@ public class SistemEkspedisi{
             } while (pilihanKembali != 'Y' && pilihanKembali != 'T');
 
         } while (pilihanKembali == 'Y');
-
+        
         System.out.println("================================");
         System.out.println("|Terima kasih telah menggunakan|\n|layanan sistem ekspedisi kami.|");
         System.out.println("================================");
     }
             
-
+    
     static boolean login(String role, String[][] userData) {
         int maxAttempts = 3;
         int attempts = 0;
-
+        
         boolean loginSuccess = false;
-
+        
         do {
             System.out.print("Masukkan Username: ");
             String inputUsername = ekspedisi.nextLine();
             System.out.print("Masukkan Password: ");
             String inputPassword = ekspedisi.nextLine();
-
+            
             for (String[] user : userData) {
                 if (user != null && user[0].equals(inputUsername) && user[1].equals(inputPassword)) {
                     loginSuccess = true;
@@ -133,28 +110,19 @@ public class SistemEkspedisi{
             if (!loginSuccess) {
                 attempts++;
                 System.out.println("Login gagal. Username atau password salah. Sisa percobaan: " + (maxAttempts - attempts));
-
+                
                 if (attempts >= maxAttempts) {
                     System.out.println("Anda telah mencapai batas percobaan login. Silakan coba beberapa saat lagi.");
                     break;
                 }
             }
         } while (!loginSuccess);
-
+        
         return loginSuccess;
     }
-
-    static boolean checkLogin(String[][] data, String username, String password) {
-        for (String[] user : data) {
-            if (username.equals(user[0]) && password.equals(user[1])) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-        //output
-        static void menuPelanggan(){
+    
+    //output
+    static void menuPelanggan(){
         boolean kondisi = true;
         while (kondisi){
             System.out.println("----------------------------------------");
@@ -166,7 +134,7 @@ public class SistemEkspedisi{
             System.out.println("----------------------------------------");
             System.out.print("Pilih menu : ");
             int pilihan = ekspedisi.nextInt();
-
+            
             switch (pilihan){
                 case 1:
                 buatPaket();
@@ -181,15 +149,27 @@ public class SistemEkspedisi{
                 break;
                 
                 case 4:
-                    kondisi=false;
-                    break;
+                System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
+                char jawaban = ekspedisi.next().charAt(0);
+
+                while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
+                    System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
+                    System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
+                    jawaban = ekspedisi.next().charAt(0);
+                }
+
+                kondisi = (jawaban == 'Y' || jawaban == 'y');
+                break;
                 default:
                     System.out.println("Pilihan tidak valid");
                     break;
+                }
+            }
         }
-    }
-}
-            static void menuAdmin() {
+        static double pendapatanHarian = 0;
+        static double pendapatanBulanan = 0;
+        static int bulanIni = -1;
+        static void menuAdmin() {
             boolean menu=true;
             while(menu){
                 System.out.println("-----------------------------");
@@ -198,16 +178,16 @@ public class SistemEkspedisi{
                 System.out.println("1. Laporan Pendapatan Harian");
                 System.out.println("2. Laporan Pendapatan Bulanan");
                 System.out.println("3. Keluar");
-
+                
                 System.out.print("Pilih menu (1-3): ");
                 int pilihan = ekspedisi.nextInt();
-
+                
                 switch (pilihan) {
                     case 1:
-                        Date currentDate = new Date();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        System.out.println("Laporan Pendapatan Harian (" + dateFormat.format(currentDate) + "): Rp " + pendapatanHarian);
-                        break;
+                    Date currentDate = new Date();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                    System.out.println("Laporan Pendapatan Harian (" + dateFormat.format(currentDate) + "): Rp " + pendapatanHarian);
+                    break;
                     case 2:
                         System.out.print("Masukkan bulan (MM): ");
                         String bulanInput = ekspedisi.next();
@@ -215,13 +195,21 @@ public class SistemEkspedisi{
                         System.out.println("Laporan Pendapatan Bulanan untuk bulan " + bulanInput + ": Rp " + pendapatanBulan);
                         break;
                     case 3:
-                        online = false;
-                        menu = false;
-                        break;
+                     System.out.print("Apakah Anda ingin kembali ke menu admin? (Y/T): ");
+                    char jawaban = ekspedisi.next().charAt(0);
+
+                    while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
+                        System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
+                        System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
+                        jawaban = ekspedisi.next().charAt(0);
+                    }
+
+                    menu = (jawaban == 'Y' || jawaban == 'y');
+                    break;
                     default:
-                        System.out.println("Pilihan tidak valid");
+                    System.out.println("Pilihan tidak valid");
                         break;
-                }
+                    }
             }
             }
 
@@ -236,7 +224,7 @@ public class SistemEkspedisi{
                     System.out.println("3. Keluar");
                     System.out.print("Pilih menu (1-3): ");
                     int pilihan = ekspedisi.nextInt();
-            
+                    
                     switch (pilihan) {
                         case 1:
                             boolean cetakstruk = false;
@@ -253,29 +241,37 @@ public class SistemEkspedisi{
                         Date currentDate = new Date();
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                         System.out.println("Tanggal dan Waktu saat mencetak label: " + dateFormat.format(currentDate));
-
+                        
                         System.out.print("Masukkan nomor resi untuk mencetak label: ");
                         String nomorResi = ekspedisi.next();
                         boolean ditemukan = printLabel(nomorResi);
-                
+                        
                         if (!ditemukan) {
                             System.out.println("Nomor resi tidak ditemukan.");
                         }
                         break;
                         case 3:
-                            online = false;
-                            validInput = true;
-                            break;
+                        System.out.print("Apakah Anda ingin kembali ke menu kasir? (Y/T): ");
+                        char jawaban = ekspedisi.next().charAt(0);
+
+                        while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
+                            System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
+                            System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
+                            jawaban = ekspedisi.next().charAt(0);
+                        }
+
+                        validInput = (jawaban == 'T' || jawaban == 't');
+                        break;
                         default:
                             System.out.println("Pilihan tidak valid. Silakan coba lagi.");
                             break;
-                    }
+                        }
                 } while (!validInput);
             }
 
             static boolean printLabel(String nomorResi) {
                 boolean ditemukan = false;
-
+                
                         for (int i = 1; i < l; i++) {
                             if (nomorResi.equals(dataEkspedisi[i][0])) {
                                 ditemukan = true;
@@ -299,16 +295,37 @@ public class SistemEkspedisi{
                         System.out.println("Alamat Tujuan: " + packageInfo[7]);
                         System.out.println("Nama Penerima: " + packageInfo[8]);
                         System.out.println("No HP Penerima: " + packageInfo[9]);
-                
+                        
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                         Date currentDate = new Date();
                         System.out.println("Tanggal Cetak: " + sdf.format(currentDate));
                 
                         System.out.println("--------------------------------------");
-                }
-            
-            
-            static void buatPaket (){
+                    }
+                    
+                    
+                    static String [][] dataEkspedisi = new String [100][50];
+                    static int l=1;
+                    static String  pengirim, penerima, layanan, kotaAsal, kotaTujuan;
+                    static int indeksKotaAsal, indeksKotaTujuan;
+                    static int maxBarang = 10; // Tentukan maksimum barang yang dapat dimasukkan
+                    static String[][] isi_barang = new String[maxBarang][3]; // Kolom pertama untuk nama barang, kolom kedua untuk jumlah barang
+                    static char jawab;
+                    static double biaya=0, totalBiaya=0.0;
+                    static long no_hp, no_hp_penerima;
+                    static double berat;
+                    static int[][] biayaEkspedisi = {
+                        // Malang Blitar Kediri Surabaya Pasuruan Tulungagung Madiun
+                       {0    , 6000 , 8000 , 10000, 6000 , 8000 , 10000},  // Malang
+                       {6000 , 0    , 6000 , 12000, 7000 , 6000 , 8000 },  // Blitar
+                       {8000 , 6000 , 0    , 13000, 10000, 7000 , 6000 },  // Kediri
+                       {10000, 12000, 13000, 0    , 8000 , 14000, 15000},  // Surabaya
+                       {6000 , 7000 , 10000, 8000 , 0    , 9000 , 10000},  // Pasuruan
+                       {8000 , 6000 , 6000 , 16000, 10000, 0    , 7000 },  // Tulungagung
+                       {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
+                   };
+                   // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
+                    static void buatPaket (){
                 int jml = 0;
                 
                 if (l < dataEkspedisi.length) {
@@ -639,36 +656,6 @@ public class SistemEkspedisi{
             System.out.println("Nomor resi tidak ditemukan.");
         }
         return false; // Pembayaran gagal
-    }
-    static boolean cetakLabel(String nomorResi) {
-        boolean ditemukan = false;
-    
-        for (int i = 1; i < l; i++) {
-            if (nomorResi.equals(dataEkspedisi[i][0])) {
-                ditemukan = true;
-                System.out.println("------------------------------");
-                System.out.println("           Label Pengiriman");
-                System.out.println("------------------------------");
-                System.out.println("No Resi: " + dataEkspedisi[i][0]);
-                System.out.println("Pengirim: " + dataEkspedisi[i][1]);
-                System.out.println("No HP Pengirim: " + dataEkspedisi[i][2]);
-                System.out.println("Isi Barang: " + dataEkspedisi[i][3]);
-                System.out.println("Layanan: " + dataEkspedisi[i][4]);
-                System.out.println("Ongkos Kirim: Rp " + dataEkspedisi[i][5]);
-                System.out.println("Berat Paket: " + dataEkspedisi[i][6] + " Kg");
-                System.out.println("Alamat Tujuan: " + dataEkspedisi[i][7]);
-                System.out.println("Nama Penerima: " + dataEkspedisi[i][8]);
-                System.out.println("No HP Penerima: " + dataEkspedisi[i][9]);
-                System.out.println("------------------------------");
-                break;
-            }
-        }
-    
-        if (!ditemukan) {
-            System.out.println("Nomor resi tidak ditemukan.");
-        }
-    
-        return ditemukan;
     }
     
     }
