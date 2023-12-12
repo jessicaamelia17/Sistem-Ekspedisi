@@ -120,6 +120,7 @@ public class SistemEkspedisi{
         
         return loginSuccess;
     }
+
     
     //output
     static void menuPelanggan(){
@@ -149,18 +150,9 @@ public class SistemEkspedisi{
                 break;
                 
                 case 4:
-                System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
-                char jawaban = ekspedisi.next().charAt(0);
-
-                while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
-                    System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
-                    System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
-                    jawaban = ekspedisi.next().charAt(0);
-                }
-
-                kondisi = (jawaban == 'Y' || jawaban == 'y');
-                break;
-                default:
+                    kondisi=false;
+                    break;
+                    default:
                     System.out.println("Pilihan tidak valid");
                     break;
                 }
@@ -195,17 +187,8 @@ public class SistemEkspedisi{
                         System.out.println("Laporan Pendapatan Bulanan untuk bulan " + bulanInput + ": Rp " + pendapatanBulan);
                         break;
                     case 3:
-                     System.out.print("Apakah Anda ingin kembali ke menu admin? (Y/T): ");
-                    char jawaban = ekspedisi.next().charAt(0);
-
-                    while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
-                        System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
-                        System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
-                        jawaban = ekspedisi.next().charAt(0);
-                    }
-
-                    menu = (jawaban == 'Y' || jawaban == 'y');
-                    break;
+                        menu = false;
+                        break;
                     default:
                     System.out.println("Pilihan tidak valid");
                         break;
@@ -251,17 +234,8 @@ public class SistemEkspedisi{
                         }
                         break;
                         case 3:
-                        System.out.print("Apakah Anda ingin kembali ke menu kasir? (Y/T): ");
-                        char jawaban = ekspedisi.next().charAt(0);
-
-                        while (jawaban != 'Y' && jawaban != 'y' && jawaban != 'T' && jawaban != 't') {
-                            System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
-                            System.out.print("Apakah Anda ingin kembali ke menu pelanggan? (Y/T): ");
-                            jawaban = ekspedisi.next().charAt(0);
-                        }
-
-                        validInput = (jawaban == 'T' || jawaban == 't');
-                        break;
+                            validInput = true;
+                            break;
                         default:
                             System.out.println("Pilihan tidak valid. Silakan coba lagi.");
                             break;
