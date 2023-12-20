@@ -44,27 +44,21 @@ public class SistemEkspedisi{
                         online = true;
                         System.out.println("Login berhasil sebagai pengguna!");
                         menuPelanggan();
-                    } else {
-                        System.out.println("Login gagal. Username atau password salah.");
-                    }
+                    } 
                     break;
                     case 2:
                     if (login("kasir", dataKasir)) {
                         online = true;
                         System.out.println("Login berhasil sebagai kasir!");
                         menuKasir();
-                    } else {
-                        System.out.println("Login gagal. Username atau password salah.");
-                    }
+                    } 
                     break;
                     case 3:
                     if (login("admin", dataAdmin)) {
                         online = true;
                         System.out.println("Login berhasil sebagai admin!");
                         menuAdmin();
-                    } else {
-                        System.out.println("Login gagal. Username atau password salah.");
-                    }
+                    } 
                     break;
                     default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi.");
