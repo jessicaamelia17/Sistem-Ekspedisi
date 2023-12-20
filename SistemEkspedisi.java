@@ -40,27 +40,27 @@ public class SistemEkspedisi{
             
             switch (choice) {
                 case 1:
-                if (login("pengguna", dataPengguna)) {
+                    if (login("pengguna", dataPengguna)) {
                         online = true;
                         System.out.println("Login berhasil sebagai pengguna!");
                         menuPelanggan();
                     } 
                     break;
-                    case 2:
+                case 2:
                     if (login("kasir", dataKasir)) {
                         online = true;
                         System.out.println("Login berhasil sebagai kasir!");
                         menuKasir();
                     } 
                     break;
-                    case 3:
+                case 3:
                     if (login("admin", dataAdmin)) {
                         online = true;
                         System.out.println("Login berhasil sebagai admin!");
                         menuAdmin();
                     } 
                     break;
-                    default:
+                default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi.");
                     break;
                 }
@@ -72,7 +72,7 @@ public class SistemEkspedisi{
                 if (pilihanKembali != 'Y' && pilihanKembali != 'T') {
                     System.out.println("Pilihan tidak valid. Silakan masukkan Y atau T.");
                 }
-            } while (pilihanKembali != 'Y' && pilihanKembali != 'T');
+                } while (pilihanKembali != 'Y' && pilihanKembali != 'T');
 
         } while (pilihanKembali == 'Y');
         
