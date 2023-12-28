@@ -146,7 +146,7 @@ public class SistemEkspedisi{
                 case 4:
                     kondisi=false;
                     break;
-                    default:
+                default:
                     System.out.println("Pilihan tidak valid");
                     break;
                 }
@@ -215,18 +215,18 @@ public class SistemEkspedisi{
                             } while (!cetakstruk);
                             break;
                         case 2:
-                        Date currentDate = new Date();
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                        System.out.println("Tanggal dan Waktu saat mencetak label: " + dateFormat.format(currentDate));
-                        
-                        System.out.print("Masukkan nomor resi untuk mencetak label: ");
-                        String nomorResi = ekspedisi.next();
-                        boolean ditemukan = printLabel(nomorResi);
-                        
-                        if (!ditemukan) {
-                            System.out.println("Nomor resi tidak ditemukan.");
-                        }
-                        break;
+                            Date currentDate = new Date();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            System.out.println("Tanggal dan Waktu saat mencetak label: " + dateFormat.format(currentDate));
+                            
+                            System.out.print("Masukkan nomor resi untuk mencetak label: ");
+                            String nomorResi = ekspedisi.next();
+                            boolean ditemukan = printLabel(nomorResi);
+                            
+                            if (!ditemukan) {
+                                System.out.println("Nomor resi tidak ditemukan.");
+                            }
+                            break;
                         case 3:
                             validInput = true;
                             break;
@@ -293,14 +293,13 @@ public class SistemEkspedisi{
                        {10000, 8000 , 6000 , 15000, 10000, 7000 , 0    }   // Madiun
                    };
                    // Membuat array 2D untuk menyimpan biaya ekspedisi antar kota
-                    static void buatPaket (){
+            static void buatPaket (){
                 int jml = 0;
                 
                 if (l < dataEkspedisi.length) {
                     System.out.println("--Data Ekspedisi--");
                     System.out.print("Nama Pengirim: ");
                     pengirim = ekspedisi.next();
-                    
                     
                     do {
                         System.out.print("Isi barang: ");
@@ -311,21 +310,20 @@ public class SistemEkspedisi{
                         jml++;
             
                         if (jml < maxBarang) {
-                            System.out.print("Apakah anda ingin menambahkan barang (Y/T)? ");
+                            System.out.print("Apakah anda ingin menambahkan barang lagi? (Y/T): ");
                             jawab = ekspedisi.next().charAt(0);
             
                             // Validasi input hanya 'Y' atau 'T'
-                            while (jawab != 'Y' && jawab != 'y' && jawab != 'T' && jawab != 't') {
+                            while (!(jawab == 'Y' || jawab == 'y' || jawab == 'T' || jawab == 't')) {
                                 System.out.println("Input tidak valid. Harap masukkan 'Y' atau 'T'.");
-                                System.out.print("Apakah anda ingin menambahkan barang (Y/T)? ");
+                                System.out.print("Apakah anda ingin menambahkan barang lagi? (Y/T): ");
                                 jawab = ekspedisi.next().charAt(0);
                             }
                         } else {
                             System.out.println("Maksimum barang tercapai. Tidak dapat menambahkan barang lagi.");
                             break;
                         }
-            
-                    } while (jawab == 'Y' || jawab == 'y');
+                    } while (jml < maxBarang && (jawab == 'Y' || jawab == 'y'));
             
                     System.out.println("-----------------------------");
                     System.out.println("Berikut adalah isi barang yang akan dipaketkan : ");
